@@ -5,7 +5,7 @@ var opcoes = {
   hostname: 'localhost',
   port: 8787,
   path: '/',
-  method: 'post',
+  method: 'get',
   headers: {
 		'Accept' : 'application/json',
 		'Content-type' : 'application/json'
@@ -13,9 +13,9 @@ var opcoes = {
 }
 
 //Content Type
-var html = 'nome=José'; //x-www-form-urlencoded
-var json = { nome:'Jose' };
-var string_json = JSON.stringify(json);
+// var html = 'nome=José'; //x-www-form-urlencoded
+// var json = { nome:'Jose' };
+// var string_json = JSON.stringify(json);
 
 var buffer_corpo_response = [];
 
@@ -28,9 +28,10 @@ var req = http.request(opcoes, function(res){
   res.on('end',function(){
     var corpo_response =  Buffer.concat(buffer_corpo_response).toString();
     console.log(corpo_response);
+    console.log(res.statusCode);
   });
 
 });
 
-req.write(string_json);
+// req.write(string_json);
 req.end();
